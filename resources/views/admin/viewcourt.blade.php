@@ -44,13 +44,15 @@
                                                                 </button>
                                                             </a>
                                                         </td>
-                                                        <td>
-                                                            <a href="/deletecourt/{{ $item->id}}">
-                                                                <button class="btn-sm btn btn-danger" title="Delete {{ucwords(str_replace("-"," ", $item->name))}}">
-                                                                    <i class="fa fa-trash"></i>
-                                                                </button>
-                                                            </a>
-                                                        </td>
+                                                        @if (isAdmin())
+                                                            <td>
+                                                                <a href="/deletecourt/{{ $item->id}}">
+                                                                    <button class="btn-sm btn btn-danger" title="Delete {{ucwords(str_replace("-"," ", $item->name))}}">
+                                                                        <i class="fa fa-trash"></i>
+                                                                    </button>
+                                                                </a>
+                                                            </td>
+                                                        @endif
                                                     </tr>
                                                     
                                                 @empty

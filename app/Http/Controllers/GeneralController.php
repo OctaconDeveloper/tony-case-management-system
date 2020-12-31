@@ -17,6 +17,7 @@ use App\Models\CourtMemo;
 use App\Models\CourtUser;
 use App\Models\Notice;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class GeneralController extends Controller
@@ -168,18 +169,16 @@ class GeneralController extends Controller
 
 
         CourtCase::create($data->toArray());
-        return redirect('/admin/viewcourtcase');
+        return redirect('/admin/viewcase');
     }
 
     public function updatecase(Request $request)
     {
-
         $status = $request->status;
-
-       $case =  CourtCase::find($request->court_case_id);
-       $case->update([
-           "status" => $status
-       ]);
+        
+        DB::table('court_cases')
+        ->where('id', $request->court_case_id)
+        ->update(['status' => $status]);
 
        $data['court_case_id'] = $request->court_case_id;
        $data['description'] = $request->summary;

@@ -34,13 +34,16 @@
                                                         <td>{{ ucfirst($item->name)}}</td>
                                                         <td>{{ $item->slug}}</td>
                                                         <td>{{ ucfirst($item->description)}}</td>
-                                                        <td>
-                                                            <a href="/deletecasecategory/{{ $item->id}}">
-                                                                <button class="btn-sm btn btn-danger" title="Delete {{ ucfirst($item->name) }}">
-                                                                    <i class="fa fa-trash"></i>
-                                                                </button>
-                                                            </a>
-                                                        </td>
+                                                        @if (isAdmin())
+                                                            <td>
+                                                                <a href="/deletecasecategory/{{ $item->id}}">
+                                                                    <button class="btn-sm btn btn-danger" title="Delete {{ ucfirst($item->name) }}">
+                                                                        <i class="fa fa-trash"></i>
+                                                                    </button>
+                                                                </a>
+                                                            </td>
+                                                        @endif
+                                                        
                                                     </tr>
                                                     
                                                 @empty

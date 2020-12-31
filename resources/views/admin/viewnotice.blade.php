@@ -59,13 +59,15 @@
                                                             }}
                                                         </td>
                                                         <td>{{ ucfirst($item->date_of_appearance)}}</td>
-                                                        <td>
-                                                            <a href="/viewnotice/{{ $item->id}}" target="_blank"> 
-                                                                <button class="btn-sm btn btn-success" title="View {{ucwords(str_replace("-"," ", $item->case_file_no))}}">
-                                                                    <i class="fa fa-eye"></i>
-                                                                </button>
-                                                            </a>
-                                                        </td>
+                                                        @if($item->judge)
+                                                            <td>
+                                                                <a href="/viewnotice/{{ $item->id}}" target="_blank"> 
+                                                                    <button class="btn-sm btn btn-success" title="View {{ucwords(str_replace("-"," ", $item->case_file_no))}}">
+                                                                        <i class="fa fa-eye"></i>
+                                                                    </button>
+                                                                </a>
+                                                            </td>
+                                                        @endif
                                                     </tr>
                                                     
                                                 @empty
